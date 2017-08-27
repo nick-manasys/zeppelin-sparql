@@ -21,7 +21,7 @@
     <h2.version>1.4.190</h2.version>
     <commons.dbcp2.version>2.0.1</commons.dbcp2.version>
     <mockrunner.jdbc.version>1.0.8</mockrunner.jdbc.version>
-    <slf4j.version>1.1</slf4j.version>
+    <slf4j.version>1.7.25</slf4j.version>
   </properties>
 
   <dependencies>
@@ -73,7 +73,7 @@
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-all</artifactId>
-      <version>1.95</version>
+      <version>1.10.19</version>
       <scope>test</scope>
     </dependency>
 
@@ -141,6 +141,16 @@
 
   <build>
     <plugins>
+<plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>versions-maven-plugin</artifactId>
+  <inherited>false</inherited>
+  <configuration>
+    <outputFile>outdated-dependencies.txt</outputFile>
+    <rulesUri>file:///${project.basedir}/maven-version-rules.xml</rulesUri>
+  </configuration>
+</plugin>
+
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
         <executions>
